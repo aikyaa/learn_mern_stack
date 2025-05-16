@@ -7,14 +7,17 @@ dotenv.config();
 
 const app = express();
 
-app.post("/products", async(req, res) => {
+app.use(express.json()); //allows us to req data
+
+app.post("/api/products", async(req, res) => {
     //res.send("Server is ready");
-    const product = req.body;
+    const product = req.body; //given by user
+
     if (!product.name || !product.price || !product.description || !product.category || !product.seller_id){
         return res.status(400).json({ success: false, message: "Please provide all the details"});
     }
 
-    const newProduct = new Product(product)
+    const newProduct = new Product(product);
 
     try{
         await newProduct.save();
