@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import {connectDB} from './config/db.js';
 import Product from "./models/products.model.js";
+import { isObjectIdOrHexString } from "mongoose";
 
 dotenv.config();
 
@@ -25,6 +26,18 @@ app.post("/api/products", async(req, res) => {
     } catch(error){
         console.error("Error in Create Product:", error.message);
         res.status(500).json({success: false, message: "Server Error"});
+    }
+});
+
+app.delete("/api/products/:ObjectId", async(req, res) => {
+    const {ObjectId} = req.params;
+    console.log("ObjectId :", ObjectId);
+
+    try{
+        await Product.findbyObjectIdandDelete(ObjectId);
+        res.status(200).json({success: true, message: "Product deleted" });
+    } catch(error){
+        res.status(400).json({success: false, message: "Product not found"});
     }
 });
 
