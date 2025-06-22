@@ -1,8 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import {connectDB} from './config/db.js';
-import Product from "./models/products.model.js";
-import { isObjectIdOrHexString } from "mongoose";
+
 import productRoutes from "./routes/products.route.js";
 
 dotenv.config();
@@ -17,8 +16,5 @@ app.listen(5000, '0.0.0.0', () => {
     connectDB();
     console.log("Server started at http://localhost:5000");
 });
-
-
-//yBZobCRs16AjuPF1
 
 

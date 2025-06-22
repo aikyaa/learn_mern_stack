@@ -1,16 +1,15 @@
 import express from "express";
-import mongoose from "mongoose";
-import Product from "../models/products.model.js";
+import { createProduct, deleteProduct, getProduct, updateProduct } from "../controller/products.controller.js";
 
 
 const router = express.Router();
 
-router.get("/", );
+router.get("/", getProducts);
 
-router.post("/", );
+router.post("/", createProduct);
 
-router.put("/:id", );
+router.put("/:id", updateProduct);
 
-router.delete("/:ObjectId", );
+router.delete("/:ObjectId", deleteProduct);
 
 export default router;

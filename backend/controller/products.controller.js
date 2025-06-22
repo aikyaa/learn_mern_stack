@@ -20,7 +20,7 @@ export const createProduct = async(req, res) => {
     }
 }
 
-export const getProduct = async(req, res) => {
+export const getProducts = async(req, res) => {
     try{
         const products = await Product.find({});
         res.status(200).json({success: true, data : products});
