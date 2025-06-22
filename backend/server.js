@@ -7,14 +7,15 @@ import productRoutes from "./routes/products.route.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); //allows us to req data
 
 app.use("/api/products", productRoutes);
 
-app.listen(5000, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
     connectDB();
-    console.log("Server started at http://localhost:5000");
+    console.log("Server started at http://localhost:"+PORT);
 });
 
 
