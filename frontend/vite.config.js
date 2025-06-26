@@ -1,13 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import tsconfigPaths from "vite-tsconfig-paths"
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-  https: false,
-  port: 3000
-  },
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
+  // server: {
+  //   host: '0.0.0.0', // Bind to all interfaces
+  //   port: 5173,
+  // }
 })
-
-
