@@ -4,10 +4,14 @@ import { base } from 'framer-motion/client'
 import React from 'react'
 import { CiShoppingCart } from "react-icons/ci"
 import { CiSquarePlus } from "react-icons/ci"
+import { useColorMode} from './ui/color-mode'
+import { IoMdMoon } from "react-icons/io";
+import { IoIosSunny } from "react-icons/io";
 
 const Navbar = () => {
+    const {colorMode, toggleColorMode} = useColorMode();
   return (
-    <Container maxW={"1140px"} px={4}>
+    <Container maxW={"1200px"} px={4} >
         <Flex
             h={16}
             alignItems={"center"}
@@ -18,24 +22,26 @@ const Navbar = () => {
             }}
         >
             <Text
-                fontSize={{base: "22", sm: "28"}}
+                fontSize={{base: "64", sm: "42"}}
                 fontWeight={"bold"}
                 textTransform={"uppercase"}
                 textAlign={"center"}
-                bgGradient={"linear(to-r,red.200,blue.200)"}
                 bgClip={"text"}
             >
-                <Link to="/">
+                <Link href="/">
                     BuySell@IIITH <CiShoppingCart style={{ fontSize: '30px' }} />
                 </Link>
 
             </Text>
             <HStack spacing={2} alignItems={"center"}>
-                <Link to={"/create"}>
+                <Link href={"/create"}>
                 <Button>
                    <CiSquarePlus fontSize={20} />
                 </Button>
                 </Link>
+                <Button onClick={toggleColorMode}>
+                    {colorMode === "light"? <IoMdMoon />:<IoIosSunny />}
+                </Button>
             </HStack>
         </Flex>
     </Container>
