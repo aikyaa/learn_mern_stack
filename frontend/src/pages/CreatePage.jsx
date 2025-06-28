@@ -40,15 +40,15 @@ const CreatePage = () => {
 
   return (
     <Container maxW={"md"}>
-      <VStack spacing={8}>
+      <VStack gap={8} >
         <Heading as={"h1"} size={"2x1"} textAlign={"center"} mb={8}>
           Create New Product
         </Heading>
         <Box 
-          w={"full"} bg={useColorModeValue("white", "gray.600")}
+          w={"full"} bg={useColorModeValue("white", "gray.700")}
           p={6} rounded={"lg"} shadow={"md"}
         >
-          <VStack spacing={4}>
+          <VStack gap={4}>
             <Input
               placeholder='Product Name'
               name='name'
@@ -84,7 +84,7 @@ const CreatePage = () => {
               onChange={(e) => setNewProduct({...newProduct, seller_id:e.target.value})}
             />
 
-            <Button colorScheme='blue' onClick={handleAddProduct} w='full'>
+            <Button colorPalette='blue' onClick={handleAddProduct} w='full'>
               Done
             </Button>
 

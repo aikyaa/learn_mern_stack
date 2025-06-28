@@ -13,27 +13,23 @@ const Navbar = () => {
   return (
     <Container maxW={"1200px"} px={4} >
         <Flex
-            h={16}
+            height={20}
             alignItems={"center"}
             justifyContent={"space-between"}
-            flexDir={{
-                base: "column",
-                sm : "row"
-            }}
+            flexDirection={{base: "column", sm:"row"}}            
         >
             <Text
                 fontSize={{base: "64", sm: "42"}}
                 fontWeight={"bold"}
                 textTransform={"uppercase"}
-                textAlign={"center"}
-                bgClip={"text"}
+                backgroundClip={"text"}
             >
                 <Link href="/">
                     BuySell@IIITH <CiShoppingCart style={{ fontSize: '30px' }} />
                 </Link>
 
             </Text>
-            <HStack spacing={2} alignItems={"center"}>
+            <HStack gap={4} alignItems={"center"}>
                 <Link href={"/create"}>
                 <Button>
                    <CiSquarePlus fontSize={20} />

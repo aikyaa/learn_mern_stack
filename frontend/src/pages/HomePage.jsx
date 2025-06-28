@@ -1,25 +1,42 @@
-import { Container, VStack, Text, Link, HStack } from '@chakra-ui/react'
-import React from 'react'
+import { useProductStore } from '@/store/product';
+import { Container, VStack, Text, Link, HStack, SimpleGrid } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 import { AiFillProduct } from "react-icons/ai";
 import { FaRegFaceSadTear } from "react-icons/fa6";
+import {ProductCard} from "@/components/ProductCard"
 
 const HomePage = () => {
+  
+  const {fetchProducts, products} = useProductStore();
+
+  useEffect(()=>{
+    fetchProducts();
+  },[fetchProducts]);
+  console.log("products", products)
+
   return (
-    <Container maxW={"2800px"} fluid>
-      <VStack spacing={8}>
-        <HStack spacing={2} alignItems={"center"}>
+    <Container maxW={"1500px"} spaceY={20} centerContent>
+      <VStack gap={8}>
+        <HStack gap={2} alignItems={"center"}>
           <Text
-          fontSize={{base: "32", sm: "28"}}
+          textStyle={"4xl"}
           fontWeight={"bold"}
           textTransform={"uppercase"}
           textAlign={"center"}
+          WebkitTextFillColor={"skyblue"}
           >
           Current Products
           </Text>
-          <AiFillProduct style={{ fontSize: '20px' }}/>
         </HStack>
 
-        <HStack spacing={5} alignItems={"center"}>
+        <SimpleGrid columns={[2, null, 3]} gap="50px">
+          {products.map((product)=>(
+            <ProductCard key={product._id} product={product}/>
+          ))}
+        </SimpleGrid>
+
+        {products.length == 0 &&(
+          <HStack gap={2} alignItems={"center"}>
           <Text fontSize={"1xl"} textAlign={"center"} fontWeight={"bold"} color={"gray.500"}>
           No Products Found 
           </Text>
@@ -30,6 +47,8 @@ const HomePage = () => {
           </Text>
           </Link>
         </HStack>
+        )}
+
       </VStack>
     </Container>
   )
