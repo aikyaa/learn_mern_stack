@@ -28,15 +28,31 @@ export const useProductStore = create((set) => ({
         set({products:received.data})
     },
     deleteProduct: async(pid) =>{
-        const res= await fetch('/api/products/${pid}',{
+        //console.log("Deleting product, URL:", `/api/products/${pid}`);
+        const res= await fetch(`/api/products/${pid}`,{
             method:"DELETE",
         });
         const data= await res.json();
-        console.log(data);
+        //console.log(data);
         if(data.success==false) return{success: false, message:data.message};
         set(state=>({products: state.products.filter(product=>product._id!=pid)}));
         return{success: true, message:"Product has been deleted."}
-    }
+    },
+    updateProduct: async(pid, updatedProduct)=>{
+        const res=await fetch(`/api/products/${pid}`,{
+            method: "PUT",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify(updatedProduct),
+        });
+        const data=await res.json();
+        if(!data.success) return{success:false, message:data.message};
+        set(state=>({
+            products: state.products.map(product=> product._id ==pid?data.data : product)
+        }));
+        return {success:true, message: "Updated successfully!"};
+    },  
 }));
 
 // const [state, setState]

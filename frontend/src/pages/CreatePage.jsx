@@ -25,12 +25,14 @@ const CreatePage = () => {
     // console.log("Message:", message);
     if(!success){
       toaster.create({
-        description: "Failed to  create Product",
+        title:"Error",
+        description: "Please provide all the details",
         type: "error",
         closable: true,
       });
     } else{
       toaster.create({
+        title:"Success",
         description: "Created Product Successfully",
         type: "success",
         closable: true,
