@@ -140,13 +140,13 @@ export const ProductCard = ({product}) => {
                                 value={updatedProduct.category || ""}
                                 onChange={(e) => setUpdatedProduct({ ...updatedProduct, category: e.target.value })}
                                 />
-                                {/* <Input
+                                <Input
                                 placeholder="Seller ID"
                                 name="seller_id"
                                 type="number"
                                 value={updatedProduct.seller_id || ""}
                                 onChange={(e) => setUpdatedProduct({ ...updatedProduct, seller_id: e.target.value })}
-                                /> */}
+                                />
                             </VStack>
                             </Dialog.Body>
                             <Dialog.Footer>
