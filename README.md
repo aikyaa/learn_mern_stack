@@ -1,10 +1,17 @@
-# learn_mern_stack
+# Product Store
+
+## Key Features:
+- Product Management: Create, Update, Delete
+- User authentication
+- Error handling
 
 ## Setup .env file
 
 ```shell
 MONGO_URI=<your_MongoDB_string>
 PORT=5000
+
+JWT_SECRET=<>
 ```
 
 ## Run locally
