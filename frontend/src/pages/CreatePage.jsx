@@ -20,6 +20,17 @@ const CreatePage = () => {
   const handleAddProduct=async()=>{
     //console.log(newProduct);
     //console.log(JSON.stringify(newProduct));
+    if(localStorage.getItem("email")){
+      newProduct.seller_id = localStorage.getItem("email");
+    } else{
+      toaster.create({
+        title:"Error",
+        description: "Log in to create a product",
+        type: "error",
+        closable: true,
+      });
+    }
+
     const {success,message}=await createProduct(newProduct);
     // console.log("Success:", success);
     // console.log("Message:", message);
@@ -79,12 +90,12 @@ const CreatePage = () => {
               onChange={(e) => setNewProduct({...newProduct, category:e.target.value})}
             />
 
-            <Input
+            {/* <Input
               placeholder='Seller ID'
               name='seller_id'
               value={newProduct.seller_id}
               onChange={(e) => setNewProduct({...newProduct, seller_id:e.target.value})}
-            />
+            /> */}
 
             <Button colorPalette='blue' onClick={handleAddProduct} w='full'>
               Done

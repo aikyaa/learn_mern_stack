@@ -37,7 +37,7 @@ const HomePage = () => {
 
         {products.length == 0 &&(
           <HStack gap={2} alignItems={"center"}>
-          <Text fontSize={"1xl"} textAlign={"center"} fontWeight={"bold"} color={"gray.500"}>
+          <Text as={"span"} fontSize={"1xl"} textAlign={"center"} fontWeight={"bold"} color={"gray.500"}>
           No Products Found 
           </Text>
           <FaRegFaceSadTear style={{ fontSize: '18px' }} />

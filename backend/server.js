@@ -4,6 +4,7 @@ import {connectDB} from './config/db.js';
 import path from "path";
 
 import productRoutes from "./routes/products.route.js";
+import userRoutes from "./routes/users.routes.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const __dirname = path.resolve();
 app.use(express.json()); //allows us to req data
 
 app.use("/api/products", productRoutes);
+app.use("/api", userRoutes);
 
 //deployment
 if(process.env.NODE_ENV==="production"){

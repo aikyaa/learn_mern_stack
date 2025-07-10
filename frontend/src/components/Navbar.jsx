@@ -38,6 +38,11 @@ const Navbar = () => {
                 <Button onClick={toggleColorMode}>
                     {colorMode === "light"? <IoMdMoon />:<IoIosSunny />}
                 </Button>
+                <Link href={"/login"}>
+                <Button onClick={toggleColorMode}>
+                    Login
+                </Button>
+                </Link>
             </HStack>
         </Flex>
     </Container>
